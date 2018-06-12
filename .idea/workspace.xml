@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63441b92-f0db-41a3-901b-052c582e8d40" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/CSVconverter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/CSVconverterVenal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/CSVconverterVenal2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/CSVconverterVenal3.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/FuzzyTest" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/FuzzyTest.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/FuzzyTest2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/FuzzyTest3.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ServidoresImobVenal.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/ServidoresImobVenal2.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group2.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group3.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group3.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group4.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group4.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/group5.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/groupDataFrames.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/program.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/servidor.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/servidores.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/servidorestable.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/test.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/FuzzyLogic.py" afterPath="$PROJECT_DIR$/FuzzyLogic.py" />
+      <change beforePath="$PROJECT_DIR$/Incompatibilidade_servidores.csv" afterPath="$PROJECT_DIR$/Incompatibilidade_servidores.csv" />
+      <change beforePath="$PROJECT_DIR$/group6.csv" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,8 +18,8 @@
       <file leaf-file-name="FuzzyLogic.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FuzzyLogic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="118" column="49" lean-forward="true" selection-start-line="118" selection-start-column="49" selection-end-line="118" selection-end-column="49" />
+            <state relative-caret-position="99">
+              <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -346,8 +325,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FuzzyLogic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="118" column="49" lean-forward="true" selection-start-line="118" selection-start-column="49" selection-end-line="118" selection-end-column="49" />
+        <state relative-caret-position="99">
+          <caret line="121" column="20" lean-forward="false" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

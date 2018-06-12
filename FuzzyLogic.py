@@ -119,7 +119,7 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
 df = pd.read_csv("group5.csv", header=0, sep=",")
 
 linhas = df.shape[0]
-for x in range(0, 15):
+for x in range(0, 150):
     g = Incompatibilidade(df.valor_bruto_mensal_para_o_mes_de_ref[x], df.data_cargo[x], df.valor_venal[x])
 
     print("Servidor: " + str(df.hash_cpf[x]) + "       Incompatibilidade: " + str(g))
