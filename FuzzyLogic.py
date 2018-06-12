@@ -15,6 +15,8 @@ def convert_comma_dot(cell):
     converted = float(cell.replace(",","."))
     return converted
 
+#códigos de fuzzy começam aqui
+
 #entradas
 salario = np.arange(0, 100, 1)
 tempoS = np.arange(0, 100, 1)
@@ -58,7 +60,7 @@ rule0 = np.fmax(salario0, tempo0) #Salario muito baixo e pouco tempo servico
 rule1 = np.fmax(salario0, tempo0) #Salario muito baixo e pouco tempo servico
 
 
-
+#fim fuzzy logic
 
 
 df = pd.read_csv("group4.csv", header=0, sep=";", converters={'data_cargo':convert_data_cargo, 'valor_bruto_mensal_para_o_mes_de_ref':convert_comma_dot})
