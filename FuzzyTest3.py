@@ -1,7 +1,7 @@
 import numpy as np
 import skfuzzy as fuzz
 
-CURRENT_TEMP = 15
+CURRENT_TEMP = 12
 CURRENT_HUM = 50
 
 x_temp = np.arange(-20, 41, 1)

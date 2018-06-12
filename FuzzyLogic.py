@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
 import skfuzzy as fuzz
-import csv
-from datetime import datetime, timedelta
 
 #códigos de fuzzy começam aqui
-def aggMemberFunc(salarioVal, tempoSVal, patrimonioVal):
+def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     #entradas
     salario = np.arange(0, 1000000, 1)
     tempoS = np.arange(0, 100, 1)
@@ -123,7 +121,7 @@ df = pd.read_csv("group5.csv", header=0, sep=",")
 
 linhas = df.shape[0]
 for x in range(0, 15):
-    g = aggMemberFunc(df.valor_bruto_mensal_para_o_mes_de_ref[x], df.data_cargo[x], df.valor_venal[x])
+    g = Incompatibilidade(df.valor_bruto_mensal_para_o_mes_de_ref[x], df.data_cargo[x], df.valor_venal[x])
 
     print("Servidor: " + str(df.hash_cpf[x]) + "       Incompatibilidade: " + str(g))
 
@@ -131,4 +129,4 @@ for x in range(0, 15):
 
     df.at[x, 'incompatibilidade_servidor'] = g
 
-df.to_csv("group6.csv", sep=",", index=False, columns=['hash_cpf', 'valor_venal','carga_horaria_semanal','data_cargo','valor_bruto_mensal_para_o_mes_de_ref','incompatibilidade_servidor'])
+df.to_csv("Incompatibilidade_servidores.csv", sep=",", index=False, columns=['hash_cpf', 'valor_venal','carga_horaria_semanal','data_cargo','valor_bruto_mensal_para_o_mes_de_ref','incompatibilidade_servidor'])
