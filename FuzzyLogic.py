@@ -28,7 +28,6 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     incomp_media = fuzz.trapmf(incomp, [30, 40, 60, 70])
     incomp_alta = fuzz.trapmf(incomp, [60, 80, 100, 100])
 
-
     salarioVal = 900
     tempoSVal = 4
     patrimonioVal=100000
