@@ -45,16 +45,16 @@ incomp_alta = fuzz.trapmf(incomp, [60, 80, 100, 100])
 
 def aggMemberFunc(salarioVal, tempoSVal, patrimonioVal, salario, tempoS, patrimonio, salario_Mbaixo, salario_baixo, salario_medio, salario_alto, tempo_pouco, tempo_moderado, tempo_muito, patrimonio_pequeno, patrimonio_medio, patrimonio_grande, incomp, incomp_baixa, incomp_media, incomp_alta):
     #interpola as variáveis
-    salario0 = fuzz.interp_membership(salario, salario_Mbaixo)
-    salario1 = fuzz.interp_membership(salario, salario_baixo)
-    salario2 = fuzz.interp_membership(salario, salario_medio)
-    salario3 = fuzz.interp_membership(salario, salario_alto)
-    tempo0 = fuzz.interp_membership(tempoS, tempo_pouco)
-    tempo1 = fuzz.interp_membership(tempoS, tempo_moderado)
-    tempo2 = fuzz.interp_membership(tempoS, tempo_muito)
-    patrimonio0 = fuzz.interp_membership(patrimonio, patrimonio_pequeno)
-    patrimonio1 = fuzz.interp_membership(patrimonio, patrimonio_medio)
-    patrimonio2 = fuzz.interp_membership(patrimonio, patrimonio_grande)
+    salario0 = fuzz.interp_membership(salario, salario_Mbaixo, salarioVal)
+    salario1 = fuzz.interp_membership(salario, salario_baixo, salarioVal)
+    salario2 = fuzz.interp_membership(salario, salario_medio, salarioVal)
+    salario3 = fuzz.interp_membership(salario, salario_alto, salarioVal)
+    tempo0 = fuzz.interp_membership(tempoS, tempo_pouco, tempoSVal)
+    tempo1 = fuzz.interp_membership(tempoS, tempo_moderado, tempoSVal)
+    tempo2 = fuzz.interp_membership(tempoS, tempo_muito, tempoSVal)
+    patrimonio0 = fuzz.interp_membership(patrimonio, patrimonio_pequeno, patrimonioVal)
+    patrimonio1 = fuzz.interp_membership(patrimonio, patrimonio_medio, patrimonioVal)
+    patrimonio2 = fuzz.interp_membership(patrimonio, patrimonio_grande, patrimonioVal)
 
     # Determina os pesos para cada antecedente
     # RULE0: SALARIO MUITO BAIXO E PEQUENO PATRIMONIO OU MEDIO PATRIMONIO OU GRANDE PATRIMONIO … INCOMPATÕVEL
@@ -100,8 +100,9 @@ def aggMemberFunc(salarioVal, tempoSVal, patrimonioVal, salario, tempoS, patrimo
     rule6 = np.fmin(rule6_1, salario3)  # tempo0 || tempo1 && patrimonio2 && salario3
 
     # FINAL RULE: INCOMPATIBILIDADE
-    final_rule = np.fmax(active_rule0, active_rule1, active_rule2, active_rule3, active_rule4, active_rule5,
-                         active_rule6)  # TODAS AS REGRAS EM UM GRANDE OU
+    final_rule = np.fmax(rule0, np.fmax(rule1, np.fmax(rule2, np.fmax(rule3,np.fmax(rule5,rule6)))))
+
+    # TODAS AS REGRAS EM UM GRANDE OU
     # Rule 0:
     # salario0 && (tempo0 || tempo1) && (patrimonio0 || patrimonio1 || patrimonio2)
 
@@ -128,7 +129,7 @@ def aggMemberFunc(salarioVal, tempoSVal, patrimonioVal, salario, tempoS, patrimo
 
     #Rule 7:
     # salario3 && (tempo0 || tempo1) && patrimonio2
-
+    
 
     incomp0 = rule0 * incomp_media
     incomp1 = rule1 * incomp_media
@@ -137,12 +138,14 @@ def aggMemberFunc(salarioVal, tempoSVal, patrimonioVal, salario, tempoS, patrimo
     incomp4 = rule4 * incomp_media
     incomp5 = rule5 * incomp_media
     incomp6 = rule6 * incomp_media
-    incomp7 = rule7 * incomp_media
 
 
-    aggregate_membership = np.fmax()
-    return aggregate_membership
-g = aggMemberFunc()
+    #aggregate_membership = np.fmax()
+    #return aggregate_membership
+    return final_rule
+
+g = aggMemberFunc(99, 1, 1, salario, tempoS, patrimonio, salario_Mbaixo, salario_baixo, salario_medio, salario_alto, tempo_pouco, tempo_moderado, tempo_muito, patrimonio_pequeno, patrimonio_medio, patrimonio_grande, incomp, incomp_baixa, incomp_media, incomp_alta)
+print(g)
 #fim fuzzy logic
 
 
