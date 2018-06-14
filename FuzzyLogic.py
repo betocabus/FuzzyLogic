@@ -5,9 +5,9 @@ import skfuzzy as fuzz
 #códigos de fuzzy começam aqui
 def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     #entradas
-    salario = np.arange(0, 1000000, 1)
-    tempoS = np.arange(0, 100, 1)
-    patrimonio = np.arange(0, 10000000, 1)
+    salario = np.arange(0, 1000001, 1)
+    tempoS = np.arange(0, 101, 1)
+    patrimonio = np.arange(0, 10000001, 1)
     incomp = np.arange(0, 101, 1)
 
     #pertinência
@@ -28,9 +28,9 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     incomp_media = fuzz.trapmf(incomp, [30, 40, 60, 70])
     incomp_alta = fuzz.trapmf(incomp, [60, 80, 100, 100])
 
-    salarioVal = 900
-    tempoSVal = 4
-    patrimonioVal=100000
+    #salarioVal = 900
+    #tempoSVal = 4
+    #patrimonioVal=100000
 
     #interpola as variáveis
     salario0 = fuzz.interp_membership(salario, salario_Mbaixo, salarioVal)
