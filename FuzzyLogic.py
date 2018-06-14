@@ -100,10 +100,10 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     incomp5 = rule5 * incomp_baixa
     incomp6 = rule6 * incomp_alta
 
-    final_rule2 = np.fmax(incomp0, np.fmax(incomp1, np.fmax(incomp2, np.fmax(incomp3, np.fmax(incomp4, np.fmax(incomp5, incomp6))))))
+    #final_rule2 = np.fmax(incomp0, np.fmax(incomp1, np.fmax(incomp2, np.fmax(incomp3, np.fmax(incomp4, np.fmax(incomp5, incomp6))))))
 
 
-    incompat = fuzz.defuzz(incomp, final_rule2, 'centroid')
+    #incompat = fuzz.defuzz(incomp, final_rule2, 'centroid')
     #print("\nRule0: " + str(rule0))
     #print("\nRule1: " + str(rule1))
     #print("\nRule2: " + str(rule2))
@@ -111,15 +111,14 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     #print("\nRule4: " + str(rule4))
     #print("\nRule5: " + str(rule5))
     #print("\nRule6: " + str(rule6))
-    return incompat
-
+    return final_rule
 #fim fuzzy logic
 
 #Salvar Incompatibilidade no CSV
 df = pd.read_csv("group5.csv", header=0, sep=",")
 
 linhas = df.shape[0]
-for x in range(0, 150):
+for x in range(0, linhas):
     g = Incompatibilidade(df.valor_bruto_mensal_para_o_mes_de_ref[x], df.data_cargo[x], df.valor_venal[x])
 
     print("Servidor: " + str(df.hash_cpf[x]) + "       Incompatibilidade: " + str(g))
