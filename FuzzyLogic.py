@@ -20,9 +20,9 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     tempo_moderado = fuzz.trapmf(tempoS, [3, 7, 15, 20])
     tempo_muito = fuzz.trapmf(tempoS, [15, 30, 100, 100])
 
-    patrimonio_pequeno = fuzz.trapmf(patrimonio, [0, 0, 15000, 35000])
-    patrimonio_medio = fuzz.trapmf(patrimonio, [15000, 35000, 400000, 600000])
-    patrimonio_grande = fuzz.trapmf(patrimonio, [400000, 800000, 10000000, 10000000])
+    patrimonio_pequeno = fuzz.trapmf(patrimonio, [0, 0, 35000, 60000])
+    patrimonio_medio = fuzz.gaussmf(patrimonio, 330000,300000)
+    patrimonio_grande = fuzz.trapmf(patrimonio, [400000, 10000000, 10000000, 10000000])
 
     incomp_baixa = fuzz.trapmf(incomp, [0, 0, 15, 35])
     incomp_media = fuzz.trapmf(incomp, [30, 40, 60, 70])
@@ -92,26 +92,18 @@ def Incompatibilidade(salarioVal, tempoSVal, patrimonioVal):
     # FINAL RULE: INCOMPATIBILIDADE
     final_rule = np.fmax(rule0, np.fmax(rule1, np.fmax(rule2, np.fmax(rule3, np.fmax(rule4, np.fmax(rule5, rule6))))))
 
-    incomp0 = rule0 * incomp_baixa
-    incomp1 = rule1 * incomp_alta
+    incomp0 = rule0 * incomp_media
+    incomp1 = rule1 * incomp_media
     incomp2 = rule2 * incomp_media
     incomp3 = rule3 * incomp_media
-    incomp4 = rule4 * incomp_alta
-    incomp5 = rule5 * incomp_baixa
-    incomp6 = rule6 * incomp_alta
+    incomp4 = rule4 * incomp_media
+    incomp5 = rule5 * incomp_media
+    incomp6 = rule6 * incomp_media
 
     #final_rule2 = np.fmax(incomp0, np.fmax(incomp1, np.fmax(incomp2, np.fmax(incomp3, np.fmax(incomp4, np.fmax(incomp5, incomp6))))))
-
-
     #incompat = fuzz.defuzz(incomp, final_rule2, 'centroid')
-    #print("\nRule0: " + str(rule0))
-    #print("\nRule1: " + str(rule1))
-    #print("\nRule2: " + str(rule2))
-    #print("\nRule3: " + str(rule3))
-    #print("\nRule4: " + str(rule4))
-    #print("\nRule5: " + str(rule5))
-    #print("\nRule6: " + str(rule6))
-    return final_rule
+
+    return round((final_rule*100),3)
 #fim fuzzy logic
 
 #Salvar Incompatibilidade no CSV
@@ -121,9 +113,7 @@ linhas = df.shape[0]
 for x in range(0, linhas):
     g = Incompatibilidade(df.valor_bruto_mensal_para_o_mes_de_ref[x], df.data_cargo[x], df.valor_venal[x])
 
-    print("Servidor: " + str(df.hash_cpf[x]) + "       Incompatibilidade: " + str(g))
-
-    #df2 = df.set_value(x, 'incompatibilidade_servidor', g, takeable=False)
+    print("Servidor: " + str(df.hash_cpf[x]) + "       Incompatibilidade: " + str(g) + " %")
 
     df.at[x, 'incompatibilidade_servidor'] = g
 
